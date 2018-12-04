@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 import '../stylesheets/Visor.css';
 
 class Visor extends React.Component {
-  render() {
-    return (
-    <div className="visor"> </div>
-    );
+    render() {
+      return (
+        <h1>count = {this.props.count}</h1>
+      );
+    }
   }
-}
-
-export default Visor;
+  
+  export default Visor;

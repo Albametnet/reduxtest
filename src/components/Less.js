@@ -1,7 +1,7 @@
 import React from "react";
 
-const Less = ({onKeyPress}) => (
-  <button onClick={onKeyPress}>-
+const Less = ({onClick}) => (
+  <button onClick={onClick}>-
   </button>
 );
 

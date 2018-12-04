@@ -1,21 +1,32 @@
-import { connect } from 'react-redux'
-import { addNum} from '../actions'
-import { subtractNum } from '../actions'
-
+import React from 'react'
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import Plus from '../components/Plus'
+import Less from '../components/Less'
 import Visor from '../components/Visor'
-import Control from '../components/Control'
 
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.addNum
-})
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(addNum(ownProps)),
+const Counter = ({addNum, substractNum, count}) => {
+  // debugger;
+    return (
+      <div>
+        <Visor count = {count}/>
+        <Plus  onClick = {(e)=> addNum()}/>
+        <Less onClick = {(e)=> substractNum()}/>
+      </div>
+    )
+}
 
-  onKeyPress: () => dispatch(subtractNum(ownProps))
-})
+function mapStateToProps (state) {
+  console.log(state)
+  return {
+    count: state
+  };
+}
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Visor, Control)
+const mapActionToProps = {
+  addNum: actions.addNum,
+  substractNum: actions.subtractNum
+}
+
+export default connect(mapStateToProps, mapActionToProps)(Counter);
